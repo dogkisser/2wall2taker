@@ -184,11 +184,6 @@ fn startup_dir() -> Result<PathBuf> {
     Ok(config_home.join("autostart"))
 }
 
-#[cfg(target_os = "macos")]
-fn startup_dir() -> Result<PathBuf> {
-    anyhow!("There is no global startup directory on macOS")
-}
-
 fn create_tray() -> Result<TrayIcon> {
     let menu = menu::Menu::new();
     menu.append(&menu::MenuItem::with_id("settings", "Settings", true, None))?;
