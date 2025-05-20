@@ -164,7 +164,7 @@ fn app_main() -> Result<()> {
                 &wallpaper_save_path,
                 &message
             ) {
-                println!("{e:?}");
+                dialog!("Couldn't communicate with walltaker: {e:?}");
             }
         }
 

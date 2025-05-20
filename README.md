@@ -3,3 +3,8 @@
 Simple [Walltaker](https://walltaker.joi.how) client for [Windows, macOS, Linux].
 
 Only con: no video support
+
+## Issues
+
+- If communication with Walltaker fails (Walltaker goes down, network issues),
+    it crashes.
