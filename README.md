@@ -8,3 +8,4 @@ Only con: no video support
 
 - If communication with Walltaker fails (Walltaker goes down, network issues),
     it crashes.
+- I think maybe keeping a dialog open too long will drop the websocket lol

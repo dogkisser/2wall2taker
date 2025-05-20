@@ -23,6 +23,7 @@ type Writer = WebSocket<MaybeTlsStream<TcpStream>>;
 
 // 256 x 256
 const ICON: &[u8] = include_bytes!("../assets/eggplant.rgb8");
+const LICENSE: &str = include_str!("../LICENSE");
 
 #[derive(Default, Serialize, Deserialize)]
 struct Settings {
@@ -107,6 +108,9 @@ fn app_main() -> Result<()> {
                         dialog!("No links are set");
                     }
                 },
+                "about" => {
+                    dialog!("{LICENSE}");
+                },
                 "exit" => {
                     std::process::exit(0);
                 },
@@ -190,6 +194,7 @@ fn create_tray() -> Result<TrayIcon> {
     menu.append(&menu::MenuItem::with_id("save_cur", "Save Current Wallpaper", true, None))?;
     menu.append(&menu::MenuItem::with_id("data_dir", "Open Data Dir", true, None))?;
     menu.append(&menu::MenuItem::with_id("refresh", "Refresh", true, None))?;
+    menu.append(&menu::MenuItem::with_id("about", "About", true, None))?;
     menu.append(&menu::MenuItem::with_id("exit", "Exit", true, None))?;
 
     Ok(TrayIconBuilder::new()
