@@ -42,6 +42,10 @@ jobs:
           libxfixes-dev libpango1.0-dev libgl1-mesa-dev libglu1-mesa-dev libxdo-dev
         if: ${{ matrix.os == 'ubuntu' }}
       
+      - name: build release (linux/windows)
+        run: cargo build --release
+        if: ${{ matrix.os != 'macos' }}
+
       # Build a fat binary with universal2 for x86 and ARM macOS support
       - name: build release (macos)
         run: |
