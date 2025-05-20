@@ -50,16 +50,16 @@ jobs:
           cargo install universal2 --version 0.0.1
           cargo universal2
           mkdir -p target/release
-          mv target/universal2-apple-darwin/release/2wall2taker target/release/2wall2taker-macos-fat
+          mv target/universal2-apple-darwin/release/twowalltwotaker target/release/2wall2taker-macos-fat
         if: ${{ matrix.os == 'macos' }}
 
       # IDK if this is proper
       - name: rename Windows artifact
-        run: mv "target/release/2wall2taker.exe" "target/release/2wall2taker-windows.exe"
+        run: mv "target/release/twowalltwotaker.exe" "target/release/2wall2taker-windows.exe"
         if: ${{ matrix.os == 'windows' }}
        
       - name: rename Linux artifact
-        run: mv "target/release/2wall2taker" "target/release/2wall2taker-linux-x11"
+        run: mv "target/release/twowalltwotaker" "target/release/2wall2taker-linux-x11"
         if: ${{ matrix.os == 'ubuntu' }}
 
       - name: publish artifact
