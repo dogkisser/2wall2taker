@@ -1,0 +1,25 @@
+[package]
+name = "twowalltwotaker"
+version = "0.1.0"
+edition = "2024"
+
+[dependencies]
+anyhow = "1.0.98"
+directories = "6.0.0"
+fl2rust-macro = "0.7.0"
+fltk = { version = "1.5.8", features = ["fltk-bundled"] }
+futures = "0.3.31"
+futures-util = "0.3.31"
+notify = "8.0.0"
+open = "5.3.2"
+serde = { version = "1.0.219", features = ["derive"] }
+serde_json = "1.0.140"
+tokio = { version = "1.45.0", features = ["fs", "macros", "rt-multi-thread", "sync"] }
+tokio-tungstenite = { version = "0.26.2", features = ["native-tls"] }
+tray-icon = "0.20.1"
+wallpaper = "3.2.0"
+
+[dependencies.reqwest]
+version = "0.12.15"
+default-features = false
+features = ["native-tls"]
