@@ -1,12 +1,11 @@
-use futures_util::SinkExt;
 use serde::{Serialize, Deserialize};
-use tokio_tungstenite::tungstenite;
 use anyhow::Result;
 
 const VERSION: &str = env!("CARGO_PKG_VERSION");
 
 #[derive(Deserialize)]
 #[serde(tag = "type", rename_all = "snake_case")]
+#[expect(dead_code, reason = "May use these in the future, not sure yet")]
 pub enum Incoming {
     Welcome,
     Ping { message: u64, },
@@ -20,6 +19,7 @@ pub enum Incoming {
 }
 
 #[derive(Deserialize)]
+#[expect(dead_code, reason = "May use these in the future")]
 pub struct WallpaperUpdate {
     pub id:       usize,
     pub post_url: Option<String>,
@@ -113,32 +113,32 @@ fn unsubscribe_message(id: usize) -> Result<String> {
     Ok(r)
 }
 
-pub async fn subscribe_to(writer: &mut crate::Writer, id: usize) -> Result<()> {
+pub fn subscribe_to(writer: &mut crate::Writer, id: usize) -> Result<()> {
     let msg = subscribe_message(id)?;
-    send(writer, &msg).await?;
+    send(writer, &msg)?;
 
     let msg = announce_message(id)?;
-    send(writer, &msg).await?;
+    send(writer, &msg)?;
 
     Ok(())
 }
 
-pub async fn unsubscribe_from(writer: &mut crate::Writer, id: usize) -> Result<()> {
+pub fn unsubscribe_from(writer: &mut crate::Writer, id: usize) -> Result<()> {
     let msg = unsubscribe_message(id)?;
-    send(writer, &msg).await?;
+    send(writer, &msg)?;
 
     Ok(())
 }
 
-pub async fn check(writer: &mut crate::Writer, id: usize) -> Result<()> {
+pub fn check(writer: &mut crate::Writer, id: usize) -> Result<()> {
     let msg = check_message(id)?;
-    send(writer, &msg).await?;
+    send(writer, &msg)?;
 
     Ok(())
 }
 
-async fn send(to: &mut crate::Writer, msg: &str) -> Result<()> {
-    to.send(tungstenite::Message::text(msg)).await?;
+fn send(to: &mut crate::Writer, msg: &str) -> Result<()> {
+    to.send(tungstenite::Message::text(msg))?;
 
     Ok(())
 }

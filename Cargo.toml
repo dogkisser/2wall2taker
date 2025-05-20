@@ -8,18 +8,27 @@ anyhow = "1.0.98"
 directories = "6.0.0"
 fl2rust-macro = "0.7.0"
 fltk = { version = "1.5.8", features = ["fltk-bundled"] }
-futures = "0.3.31"
-futures-util = "0.3.31"
+fltk-theme = "0.7.9"
 notify = "8.0.0"
 open = "5.3.2"
 serde = { version = "1.0.219", features = ["derive"] }
 serde_json = "1.0.140"
-tokio = { version = "1.45.0", features = ["fs", "macros", "rt-multi-thread", "sync"] }
-tokio-tungstenite = { version = "0.26.2", features = ["native-tls"] }
+single-instance = "0.3.3"
 tray-icon = "0.20.1"
+tungstenite = { version = "0.26.2", features = ["native-tls"] }
 wallpaper = "3.2.0"
 
-[dependencies.reqwest]
-version = "0.12.15"
+[dependencies.ureq]
+version = "3.0.11"
 default-features = false
 features = ["native-tls"]
+
+[target.'cfg(windows)'.build-dependencies]
+embed-resource = "3.0"
+
+[profile.release]
+codegen-units = 1
+lto = true
+opt-level = "s"
+panic = "abort"
+strip = true
