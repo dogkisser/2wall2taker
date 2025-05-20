@@ -6,8 +6,9 @@ class UserInterface {open
 } {
   Function {settings_window()} {open
   } {
-    Fl_Window {} {open
-      xywh {3155 822 321 326} type Double visible
+    Fl_Window {} {
+      label {2 Wall 2 Taker} open
+      xywh {3478 871 321 326} type Double visible
     } {
       Fl_Input ids_input {
         label {ID(s):}

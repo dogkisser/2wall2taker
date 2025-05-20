@@ -228,8 +228,8 @@ fn read_walltaker_message<P: AsRef<Path>>(
 ) -> Result<()> {
     use crate::walltaker::Incoming;
 
-    println!("{message}");
-    let message = serde_json::from_str(message)?;
+    println!("<= {message}");
+    let message = serde_json::from_str(message).context(format!("Parsing {message:#?}"))?;
     #[expect (clippy::match_same_arms, reason = "Prettier, might diverge later")]
     match message {
         Incoming::Ping { .. } => { },

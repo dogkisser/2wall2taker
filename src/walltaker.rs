@@ -138,6 +138,7 @@ pub fn check(writer: &mut crate::Writer, id: usize) -> Result<()> {
 }
 
 fn send(to: &mut crate::Writer, msg: &str) -> Result<()> {
+    println!("=> {msg}");
     to.send(tungstenite::Message::text(msg))?;
 
     Ok(())
