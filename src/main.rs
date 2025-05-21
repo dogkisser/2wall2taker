@@ -50,6 +50,7 @@ fn app_main() -> Result<()> {
     let instance = SingleInstance::new("2wall2taker").unwrap();
     if !instance.is_single() {
         dialog!("2 Wall 2 Taker is already running.");
+        std::process::exit(0);
     }
 
     let theme = fltk_theme::WidgetTheme::new(fltk_theme::ThemeType::Metro);
