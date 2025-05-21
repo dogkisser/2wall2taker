@@ -281,7 +281,12 @@ fn settings_window(
     current_settings: &Settings,
     settings_write: mpsc::Sender<Settings>
 ) {
+    use fltk::{enums::ColorDepth, image::RgbImage};
+
     let mut ui: ui::UserInterface = ui::UserInterface::settings_window();
+    /* SAFETY: this is definitely valid 256x256 rgba8 image data */
+    let icon = unsafe { RgbImage::from_data(ICON, 256, 256, ColorDepth::Rgba8).unwrap() };
+    ui.settings_window.set_icon(Some(icon));
 
     let ids = current_settings.ids
         .iter()
