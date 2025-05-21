@@ -9,7 +9,6 @@ directories = "6.0.0"
 fl2rust-macro = "0.7.0"
 fltk = { version = "1.5.8", features = ["fltk-bundled"] }
 fltk-theme = "0.7.9"
-notify = "8.0.0"
 open = "5.3.2"
 serde = { version = "1.0.219", features = ["derive"] }
 serde_json = "1.0.140"
